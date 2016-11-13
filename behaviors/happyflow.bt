@@ -1,0 +1,212 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "children": [
+            "0097f9cc-490e-4461-963d-5ae84f46ac50",
+            "1d3f4035-6d6d-406d-a757-278ec672840d",
+            "62b61f60-6b2c-4cfc-8f77-36fd6829caea",
+            "90d8f18c-cf74-4db3-8bc7-035524a88f33",
+            "cc004a78-8a2b-44ff-82ef-253bc259bb1c"
+        ],
+        "decorators": [],
+        "options": {}
+    },
+    "meta": {
+        "version": 1
+    },
+    "cc004a78-8a2b-44ff-82ef-253bc259bb1c": {
+        "id": "cc004a78-8a2b-44ff-82ef-253bc259bb1c",
+        "class": "Switch",
+        "name": "do you want to play music?",
+        "options": {},
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            "88eb3e5f-a3cc-406d-9e30-ce5b566d0004",
+            "c301e16c-a8c7-4efe-9051-2d68d95bccd9"
+        ]
+    },
+    "c301e16c-a8c7-4efe-9051-2d68d95bccd9": {
+        "id": "c301e16c-a8c7-4efe-9051-2d68d95bccd9",
+        "class": "Subtree",
+        "name": "yes",
+        "options": {
+            "behaviorPath": "party.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "cc004a78-8a2b-44ff-82ef-253bc259bb1c",
+        "decorators": [
+            "81961148-65d0-4db2-8fa7-3b341a7b139d"
+        ]
+    },
+    "88eb3e5f-a3cc-406d-9e30-ce5b566d0004": {
+        "id": "88eb3e5f-a3cc-406d-9e30-ce5b566d0004",
+        "class": "Subtree",
+        "name": "no ",
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "cc004a78-8a2b-44ff-82ef-253bc259bb1c",
+        "decorators": [
+            "3a73d8e5-7e35-4b7e-a1da-1b954857d7ea"
+        ]
+    },
+    "1d3f4035-6d6d-406d-a757-278ec672840d": {
+        "id": "1d3f4035-6d6d-406d-a757-278ec672840d",
+        "class": "TextToSpeech",
+        "name": "ask about music ",
+        "options": {
+            "words": "I see that you are happy. Can we throw a party tonight ? ",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "0097f9cc-490e-4461-963d-5ae84f46ac50": {
+        "id": "0097f9cc-490e-4461-963d-5ae84f46ac50",
+        "class": "PlayAnimation",
+        "name": "jibo wakes up",
+        "options": {
+            "animPath": "greeting.keys",
+            "config": [
+                "(animation) => {",
+                "  console.log('Animation Plug Happy Flow');",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "90d8f18c-cf74-4db3-8bc7-035524a88f33": {
+        "id": "90d8f18c-cf74-4db3-8bc7-035524a88f33",
+        "class": "Subtree",
+        "name": "listen animation",
+        "options": {
+            "behaviorPath": "listen.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [
+            "9142c281-1ce2-4179-9195-28f6e373da50"
+        ]
+    },
+    "62b61f60-6b2c-4cfc-8f77-36fd6829caea": {
+        "id": "62b61f60-6b2c-4cfc-8f77-36fd6829caea",
+        "class": "LookAt",
+        "name": "",
+        "options": {
+            "getTarget": [
+                "() => {",
+                "    return {x: 180, y: 0, z: 0};",
+                "}"
+            ],
+            "isContinuous": false,
+            "config": [
+                "(lookAt) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "3a73d8e5-7e35-4b7e-a1da-1b954857d7ea": {
+        "id": "3a73d8e5-7e35-4b7e-a1da-1b954857d7ea",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  if (notepad.what == \"no\")",
+                "    {",
+                "      return true;",
+                "    }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "81961148-65d0-4db2-8fa7-3b341a7b139d": {
+        "id": "81961148-65d0-4db2-8fa7-3b341a7b139d",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "",
+                "  if (notepad.what == \"yes\")",
+                "    {",
+                "      return true;",
+                "    }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "9142c281-1ce2-4179-9195-28f6e373da50": {
+        "id": "9142c281-1ce2-4179-9195-28f6e373da50",
+        "class": "SucceedOnListen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "yesno.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', function(asrResult, speakerIds) {",
+                "if (asrResult.NLParse.what == \"yes\") {",
+                "  notepad.what = \"yes\";",
+                "} else {",
+                "  notepad.what = \"no\";",
+                "}",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    }
+}

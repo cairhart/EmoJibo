@@ -1,0 +1,95 @@
+{
+    "3": {
+        "id": 3,
+        "class": "Parallel",
+        "name": "",
+        "asset-pack": "core",
+        "children": [
+            "c19b6138-7e56-4789-96cf-3eed6e6367ad"
+        ],
+        "decorators": [],
+        "options": {
+            "succeedOnOne": false
+        }
+    },
+    "meta": {
+        "version": 1
+    },
+    "c19b6138-7e56-4789-96cf-3eed6e6367ad": {
+        "id": "c19b6138-7e56-4789-96cf-3eed6e6367ad",
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 3,
+        "children": [
+            "eefe0697-444d-4bf6-ad40-c16265fa72c5",
+            "489064c3-d667-4324-8242-8870e130bd17",
+            "0e9ae306-98d2-4922-8903-d9cc2b1494a8"
+        ],
+        "decorators": [
+            "afd29ccb-0b80-4545-b687-452f6ee6a6ce"
+        ],
+        "options": {}
+    },
+    "489064c3-d667-4324-8242-8870e130bd17": {
+        "id": "489064c3-d667-4324-8242-8870e130bd17",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "leanback.keys",
+            "config": [
+                "(animation) => {",
+                "  animation.setSpeed(.5);",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "c19b6138-7e56-4789-96cf-3eed6e6367ad"
+    },
+    "eefe0697-444d-4bf6-ad40-c16265fa72c5": {
+        "id": "eefe0697-444d-4bf6-ad40-c16265fa72c5",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "ear.keys",
+            "config": [
+                "(animation) => {",
+                "  animation.setSpeed(.5);",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "c19b6138-7e56-4789-96cf-3eed6e6367ad"
+    },
+    "0e9ae306-98d2-4922-8903-d9cc2b1494a8": {
+        "id": "0e9ae306-98d2-4922-8903-d9cc2b1494a8",
+        "class": "TimeoutJs",
+        "name": "",
+        "options": {
+            "getTime": [
+                "() => {",
+                "    return 2000 + 2500 * Math.random();",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "c19b6138-7e56-4789-96cf-3eed6e6367ad"
+    },
+    "afd29ccb-0b80-4545-b687-452f6ee6a6ce": {
+        "id": "afd29ccb-0b80-4545-b687-452f6ee6a6ce",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "  return true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    }
+}

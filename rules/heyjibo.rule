@@ -1,0 +1,15 @@
+TopRule = $*
+
+(hey jibo){what='hello'} |
+(hi jibo){what='hello'} |
+(whats up jibo){what='hello'}
+
+$*;
+
+
+
+(hey jibo){what='hello'} |
+(hi jibo){what='hello'} |
+(whats up jibo){what='hello'}
+
+$*;

@@ -1,0 +1,103 @@
+{
+    "3": {
+        "id": 3,
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "children": [
+            "1f6192bb-688e-4d11-a913-b9c6b9524a3d"
+        ],
+        "decorators": []
+    },
+    "meta": {
+        "version": 1
+    },
+    "1f6192bb-688e-4d11-a913-b9c6b9524a3d": {
+        "id": "1f6192bb-688e-4d11-a913-b9c6b9524a3d",
+        "class": "Parallel",
+        "name": "",
+        "options": {
+            "succeedOnOne": false
+        },
+        "asset-pack": "core",
+        "parent": 3,
+        "children": [
+            "2ec1187a-d585-438e-b23f-0b8ed69bae31",
+            "0cebe1eb-7488-4a92-a07b-c7e94d115177"
+        ]
+    },
+    "3ed777f3-07d7-48a0-b7fc-2a41fdc1f6cf": {
+        "id": "3ed777f3-07d7-48a0-b7fc-2a41fdc1f6cf",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "happy.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "0cebe1eb-7488-4a92-a07b-c7e94d115177"
+    },
+    "ff6f6fce-b977-4df3-9b49-e93d8ea1b8fb": {
+        "id": "ff6f6fce-b977-4df3-9b49-e93d8ea1b8fb",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "heart.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "0cebe1eb-7488-4a92-a07b-c7e94d115177",
+        "decorators": [
+            "2125cf5a-b4a8-4f8c-8709-7d833ca43262"
+        ]
+    },
+    "0cebe1eb-7488-4a92-a07b-c7e94d115177": {
+        "id": "0cebe1eb-7488-4a92-a07b-c7e94d115177",
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "1f6192bb-688e-4d11-a913-b9c6b9524a3d",
+        "children": [
+            "3ed777f3-07d7-48a0-b7fc-2a41fdc1f6cf",
+            "ff6f6fce-b977-4df3-9b49-e93d8ea1b8fb"
+        ],
+        "decorators": []
+    },
+    "2ec1187a-d585-438e-b23f-0b8ed69bae31": {
+        "id": "2ec1187a-d585-438e-b23f-0b8ed69bae31",
+        "class": "PlayAudio",
+        "name": "",
+        "options": {
+            "audioPath": "FX_DoYouWantToPlay_01.mp3"
+        },
+        "asset-pack": "core",
+        "parent": "1f6192bb-688e-4d11-a913-b9c6b9524a3d"
+    },
+    "2125cf5a-b4a8-4f8c-8709-7d833ca43262": {
+        "id": "2125cf5a-b4a8-4f8c-8709-7d833ca43262",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "  self.count = 3;",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    self.count --;",
+                "    return self.count > 0;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    }
+}

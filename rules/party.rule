@@ -1,0 +1,1 @@
+TopRule = $* (friends){what='friends'} | (buddies){what='friends'} | (mates){what='friends'} $*;

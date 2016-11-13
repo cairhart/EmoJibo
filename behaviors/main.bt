@@ -1,0 +1,592 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "children": [
+            "0097f9cc-490e-4461-963d-5ae84f46ac50",
+            "1d3f4035-6d6d-406d-a757-278ec672840d",
+            "62b61f60-6b2c-4cfc-8f77-36fd6829caea",
+            "90d8f18c-cf74-4db3-8bc7-035524a88f33",
+            "cc004a78-8a2b-44ff-82ef-253bc259bb1c",
+            "c06160b8-536c-4aa3-b119-979c55cda3df",
+            "d4621806-1bdd-4066-b5e9-a50d214df0f6",
+            "7afe09af-722a-4d31-aaa5-3887dfad5186",
+            "64e2b141-221f-45a9-a3b4-a87fe44f20fa",
+            "8922c08e-ab6e-432b-98b1-d1778e5d476a",
+            "1bdf78cb-3436-450a-8177-a762439fdffc",
+            "f69cecb7-dd79-43d8-b2c4-1113cc04872c",
+            "5c226b4a-15c3-4505-b1b1-dbcbec95c498",
+            "1d5c4541-ea12-4568-89fc-75ef661fe139"
+        ],
+        "decorators": [],
+        "options": {}
+    },
+    "meta": {
+        "version": 1
+    },
+    "cc004a78-8a2b-44ff-82ef-253bc259bb1c": {
+        "id": "cc004a78-8a2b-44ff-82ef-253bc259bb1c",
+        "class": "Switch",
+        "name": "do you want to play music?",
+        "options": {},
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            "88eb3e5f-a3cc-406d-9e30-ce5b566d0004",
+            "c301e16c-a8c7-4efe-9051-2d68d95bccd9"
+        ]
+    },
+    "c301e16c-a8c7-4efe-9051-2d68d95bccd9": {
+        "id": "c301e16c-a8c7-4efe-9051-2d68d95bccd9",
+        "class": "Subtree",
+        "name": "yes",
+        "options": {
+            "behaviorPath": "playmusic.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "cc004a78-8a2b-44ff-82ef-253bc259bb1c",
+        "decorators": [
+            "81961148-65d0-4db2-8fa7-3b341a7b139d"
+        ]
+    },
+    "88eb3e5f-a3cc-406d-9e30-ce5b566d0004": {
+        "id": "88eb3e5f-a3cc-406d-9e30-ce5b566d0004",
+        "class": "Subtree",
+        "name": "no ",
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "cc004a78-8a2b-44ff-82ef-253bc259bb1c",
+        "decorators": [
+            "3a73d8e5-7e35-4b7e-a1da-1b954857d7ea"
+        ]
+    },
+    "1d3f4035-6d6d-406d-a757-278ec672840d": {
+        "id": "1d3f4035-6d6d-406d-a757-278ec672840d",
+        "class": "TextToSpeech",
+        "name": "ask about music ",
+        "options": {
+            "words": "I see that you are upset. I've been listening to a song I think you'll definitely like. \nWant to listen?",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "0097f9cc-490e-4461-963d-5ae84f46ac50": {
+        "id": "0097f9cc-490e-4461-963d-5ae84f46ac50",
+        "class": "PlayAnimation",
+        "name": "jibo wakes up",
+        "options": {
+            "animPath": "greeting.keys",
+            "config": [
+                "(animation) => {",
+                "  console.log('Animation Plug Sad Flow');",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "90d8f18c-cf74-4db3-8bc7-035524a88f33": {
+        "id": "90d8f18c-cf74-4db3-8bc7-035524a88f33",
+        "class": "Subtree",
+        "name": "listen animation",
+        "options": {
+            "behaviorPath": "listen.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [
+            "9142c281-1ce2-4179-9195-28f6e373da50"
+        ]
+    },
+    "62b61f60-6b2c-4cfc-8f77-36fd6829caea": {
+        "id": "62b61f60-6b2c-4cfc-8f77-36fd6829caea",
+        "class": "LookAt",
+        "name": "",
+        "options": {
+            "getTarget": [
+                "() => {",
+                "    return {x: 180, y: 0, z: 0};",
+                "}"
+            ],
+            "isContinuous": false,
+            "config": [
+                "(lookAt) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "3a73d8e5-7e35-4b7e-a1da-1b954857d7ea": {
+        "id": "3a73d8e5-7e35-4b7e-a1da-1b954857d7ea",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  if (notepad.what == \"no\")",
+                "    {",
+                "      return true;",
+                "    }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "81961148-65d0-4db2-8fa7-3b341a7b139d": {
+        "id": "81961148-65d0-4db2-8fa7-3b341a7b139d",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "",
+                "  if (notepad.what == \"yes\")",
+                "    {",
+                "      return true;",
+                "    }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "9142c281-1ce2-4179-9195-28f6e373da50": {
+        "id": "9142c281-1ce2-4179-9195-28f6e373da50",
+        "class": "SucceedOnListen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "yesno.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', function(asrResult, speakerIds) {",
+                "if (asrResult.NLParse.what == \"yes\") {",
+                "  notepad.what = \"yes\";",
+                "} else {",
+                "  notepad.what = \"no\";",
+                "}",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "f69cecb7-dd79-43d8-b2c4-1113cc04872c": {
+        "id": "f69cecb7-dd79-43d8-b2c4-1113cc04872c",
+        "class": "TextToSpeech",
+        "name": "ask about icecream",
+        "options": {
+            "words": "Well if music and jokes don't hit the spot, how about some icecream?",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "5c226b4a-15c3-4505-b1b1-dbcbec95c498": {
+        "id": "5c226b4a-15c3-4505-b1b1-dbcbec95c498",
+        "class": "Subtree",
+        "name": "listen",
+        "options": {
+            "behaviorPath": "listen.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [
+            "519c1567-d478-44d2-804e-3ab04f83fb8d"
+        ]
+    },
+    "519c1567-d478-44d2-804e-3ab04f83fb8d": {
+        "id": "519c1567-d478-44d2-804e-3ab04f83fb8d",
+        "class": "SucceedOnListen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "yesno.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', function(asrResult, speakerIds) {",
+                "if (asrResult.NLParse.what == \"yes\") {",
+                "  notepad.what = \"yes\";",
+                "} else {",
+                "  notepad.what = \"no\";",
+                "}",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "1d5c4541-ea12-4568-89fc-75ef661fe139": {
+        "id": "1d5c4541-ea12-4568-89fc-75ef661fe139",
+        "class": "Switch",
+        "name": "do you want icecream?",
+        "options": {},
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            "b1eb8716-e000-45ca-ad11-b06ef8dee765",
+            "e44ef425-ef33-411f-b66d-a31560997c33"
+        ]
+    },
+    "e44ef425-ef33-411f-b66d-a31560997c33": {
+        "id": "e44ef425-ef33-411f-b66d-a31560997c33",
+        "class": "Subtree",
+        "name": "no",
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "1d5c4541-ea12-4568-89fc-75ef661fe139",
+        "decorators": [
+            "0ad8a933-422d-4d9e-b5e9-3f8961f2c9b7"
+        ]
+    },
+    "0ad8a933-422d-4d9e-b5e9-3f8961f2c9b7": {
+        "id": "0ad8a933-422d-4d9e-b5e9-3f8961f2c9b7",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  if (notepad.what == \"no\")",
+                "    {",
+                "      return true;",
+                "    }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "c06160b8-536c-4aa3-b119-979c55cda3df": {
+        "id": "c06160b8-536c-4aa3-b119-979c55cda3df",
+        "class": "TextToSpeech",
+        "name": "ask for another song",
+        "options": {
+            "words": "Want me to play another? I think you'll really like the next one.",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "d4621806-1bdd-4066-b5e9-a50d214df0f6": {
+        "id": "d4621806-1bdd-4066-b5e9-a50d214df0f6",
+        "class": "Subtree",
+        "name": "listen",
+        "options": {
+            "behaviorPath": "listen.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [
+            "75910e3a-0b28-417a-8821-de9c7acaf5be"
+        ]
+    },
+    "75910e3a-0b28-417a-8821-de9c7acaf5be": {
+        "id": "75910e3a-0b28-417a-8821-de9c7acaf5be",
+        "class": "SucceedOnListen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "yesno.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', function(asrResult, speakerIds) {",
+                "if (asrResult.NLParse.what == \"yes\") {",
+                "  notepad.what = \"yes\";",
+                "} else {",
+                "  notepad.what = \"no\";",
+                "}",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "7afe09af-722a-4d31-aaa5-3887dfad5186": {
+        "id": "7afe09af-722a-4d31-aaa5-3887dfad5186",
+        "class": "TextToSpeech",
+        "name": "ok maybe later",
+        "options": {
+            "words": "Alright! Maybe we can listen to it later. ",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "64e2b141-221f-45a9-a3b4-a87fe44f20fa": {
+        "id": "64e2b141-221f-45a9-a3b4-a87fe44f20fa",
+        "class": "TextToSpeech",
+        "name": "silly face",
+        "options": {
+            "words": "Hey, I gotta ask. Is this a good look on me?",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "1bdf78cb-3436-450a-8177-a762439fdffc": {
+        "id": "1bdf78cb-3436-450a-8177-a762439fdffc",
+        "class": "PlayAnimation",
+        "name": "silly face animation",
+        "options": {
+            "animPath": "sillyface.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "8922c08e-ab6e-432b-98b1-d1778e5d476a": {
+        "id": "8922c08e-ab6e-432b-98b1-d1778e5d476a",
+        "class": "TimeoutJs",
+        "name": "",
+        "options": {
+            "getTime": [
+                "() => {",
+                "    return 2000;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "b1eb8716-e000-45ca-ad11-b06ef8dee765": {
+        "id": "b1eb8716-e000-45ca-ad11-b06ef8dee765",
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "1d5c4541-ea12-4568-89fc-75ef661fe139",
+        "decorators": [
+            "8f667162-5049-4164-b811-89960d8c6b2d"
+        ],
+        "children": [
+            "3e681a94-77d4-4584-933e-c25f4cd34a97",
+            "975f8c63-6279-40b4-bc24-c0939598eb82",
+            "24110d50-da81-4153-8182-b70d03e94504",
+            "c9c7698d-b032-4776-9999-62380322a53b",
+            "5d7341f2-e201-4e90-a515-1500b15cce79"
+        ]
+    },
+    "8f667162-5049-4164-b811-89960d8c6b2d": {
+        "id": "8f667162-5049-4164-b811-89960d8c6b2d",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "",
+                "  if (notepad.what == \"yes\")",
+                "    {",
+                "      return true;",
+                "    }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "3e681a94-77d4-4584-933e-c25f4cd34a97": {
+        "id": "3e681a94-77d4-4584-933e-c25f4cd34a97",
+        "class": "ExecuteScript",
+        "name": "",
+        "options": {
+            "exec": [
+                "() => {",
+                "  const RapidAPI = require('rapidapi-connect');",
+                "  const rapid = new RapidAPI('ConnectSpot', '0c8ba70f-a753-4d77-be8c-8b991f6dfa01');",
+                "",
+                "  rapid.call('Twilio', 'sendSms', { ",
+                "      'accountSid': 'ACc2134e2652d189726c100fd467eafc50',",
+                "      'accountToken': 'bb8754fe66962ecdb3af5c093dd7b20c',",
+                "      'from': '18064724596',",
+                "      'messagingServiceSid': '',",
+                "      'to': '18067890641',",
+                "      'body': 'You just ordered an ice cream from your EmoJibo',",
+                "      'statusCallback': '',",
+                "      'applicationSid': '',",
+                "      'maxPrice': '',",
+                "      'provideFeedback': ''",
+                "",
+                "  }).on('success', function(payload){",
+                "       console.log('Twillio1 success ', payload); ",
+                "  }).on('error', function(payload){",
+                "       console.log('Twillio1 error ', payload); ",
+                "  }); ",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "b1eb8716-e000-45ca-ad11-b06ef8dee765"
+    },
+    "975f8c63-6279-40b4-bc24-c0939598eb82": {
+        "id": "975f8c63-6279-40b4-bc24-c0939598eb82",
+        "class": "TextToSpeech",
+        "name": "",
+        "options": {
+            "words": "Oh phew because I already ordered it to cheer you up!\n",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "b1eb8716-e000-45ca-ad11-b06ef8dee765"
+    },
+    "5d7341f2-e201-4e90-a515-1500b15cce79": {
+        "id": "5d7341f2-e201-4e90-a515-1500b15cce79",
+        "class": "Subtree",
+        "name": "",
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "b1eb8716-e000-45ca-ad11-b06ef8dee765"
+    },
+    "24110d50-da81-4153-8182-b70d03e94504": {
+        "id": "24110d50-da81-4153-8182-b70d03e94504",
+        "class": "TimeoutJs",
+        "name": "",
+        "options": {
+            "getTime": [
+                "() => {",
+                "    return 1000;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "b1eb8716-e000-45ca-ad11-b06ef8dee765"
+    },
+    "c9c7698d-b032-4776-9999-62380322a53b": {
+        "id": "c9c7698d-b032-4776-9999-62380322a53b",
+        "class": "TextToSpeech",
+        "name": "",
+        "options": {
+            "words": "Ice Cream is one the way, I'm so happy to see you smiling again!! ",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "b1eb8716-e000-45ca-ad11-b06ef8dee765"
+    }
+}

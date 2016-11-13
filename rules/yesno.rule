@@ -1,0 +1,1 @@
+TopRule = $* (yes){what='yes'} | (yeah){what='yes'} | (no){what='no'} | (nah){what='no'} $*;

@@ -1,0 +1,340 @@
+{
+    "3": {
+        "id": 3,
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "children": [
+            "cdef80a0-5a64-45f2-a4e3-756b0227ef88",
+            "bc79aeb6-deae-413e-b481-474458564a1e",
+            "593b660d-4bcc-42b5-912d-0eafe56c3563",
+            "fb9d8741-0b6f-4711-991f-320e5fa96a77"
+        ],
+        "decorators": []
+    },
+    "meta": {
+        "version": 1
+    },
+    "cdef80a0-5a64-45f2-a4e3-756b0227ef88": {
+        "id": "cdef80a0-5a64-45f2-a4e3-756b0227ef88",
+        "class": "TextToSpeech",
+        "name": "",
+        "options": {
+            "words": "Who do you want to invite ?",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 3
+    },
+    "bc79aeb6-deae-413e-b481-474458564a1e": {
+        "id": "bc79aeb6-deae-413e-b481-474458564a1e",
+        "class": "LookAt",
+        "name": "",
+        "options": {
+            "getTarget": [
+                "() => {",
+                "    return {x: 180, y: 0, z: 0};",
+                "}"
+            ],
+            "isContinuous": false,
+            "config": [
+                "(lookAt) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 3
+    },
+    "0d0df8d2-fdcf-4a59-8a57-609e32aebf3e": {
+        "id": "0d0df8d2-fdcf-4a59-8a57-609e32aebf3e",
+        "class": "SucceedOnListen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "party.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', function(asrResult, speakerIds) {",
+                "if (asrResult.NLParse.what == \"friends\") {",
+                "  notepad.what = \"yes\";",
+                "} else {",
+                "  notepad.what = \"no\";",
+                "}",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "593b660d-4bcc-42b5-912d-0eafe56c3563": {
+        "id": "593b660d-4bcc-42b5-912d-0eafe56c3563",
+        "class": "Subtree",
+        "name": "listen animation",
+        "options": {
+            "behaviorPath": "listen.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 3,
+        "decorators": [
+            "0d0df8d2-fdcf-4a59-8a57-609e32aebf3e"
+        ]
+    },
+    "fb9d8741-0b6f-4711-991f-320e5fa96a77": {
+        "id": "fb9d8741-0b6f-4711-991f-320e5fa96a77",
+        "class": "Switch",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": 3,
+        "children": [
+            "a987bc74-96aa-4e14-97cd-40f1745e6a1c",
+            "4d8671a7-17cd-4c29-a57e-27b1d52e1efa"
+        ]
+    },
+    "4d8671a7-17cd-4c29-a57e-27b1d52e1efa": {
+        "id": "4d8671a7-17cd-4c29-a57e-27b1d52e1efa",
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "fb9d8741-0b6f-4711-991f-320e5fa96a77",
+        "decorators": [
+            "eda47eb7-9936-4c75-b9ca-95bed6b47645"
+        ],
+        "children": [
+            "aa5b039a-18ff-4d76-ad87-619dfdd5ebaf",
+            "c95751d0-b890-491b-96bb-64fc5411c093",
+            "72ade94a-4ce3-473d-9db5-6407ff58729f",
+            "8e4b6a52-9aa3-448e-a86c-e249cce9e85c",
+            "eeb281b0-a516-49ec-8939-677949367e2f",
+            "fed20597-5b8e-479c-a0f4-9ecd4989ccdf"
+        ]
+    },
+    "eda47eb7-9936-4c75-b9ca-95bed6b47645": {
+        "id": "eda47eb7-9936-4c75-b9ca-95bed6b47645",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  if (notepad.what == \"yes\")",
+                "    {",
+                "      return true;",
+                "    }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "a987bc74-96aa-4e14-97cd-40f1745e6a1c": {
+        "id": "a987bc74-96aa-4e14-97cd-40f1745e6a1c",
+        "class": "Subtree",
+        "name": "",
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "fb9d8741-0b6f-4711-991f-320e5fa96a77",
+        "decorators": [
+            "d0974bfd-067e-4f61-8f37-2b3278923a4b"
+        ]
+    },
+    "d0974bfd-067e-4f61-8f37-2b3278923a4b": {
+        "id": "d0974bfd-067e-4f61-8f37-2b3278923a4b",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  if (notepad.what == \"no\")",
+                "    {",
+                "      return true;",
+                "    }",
+                "  return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "8e4b6a52-9aa3-448e-a86c-e249cce9e85c": {
+        "id": "8e4b6a52-9aa3-448e-a86c-e249cce9e85c",
+        "class": "ExecuteScript",
+        "name": "",
+        "options": {
+            "exec": [
+                "() => {",
+                "const RapidAPI = require('rapidapi-connect');",
+                "const rapid = new RapidAPI('ConnectSpot', '0c8ba70f-a753-4d77-be8c-8b991f6dfa01');",
+                "",
+                "rapid.call('Twilio', 'sendSms', { ",
+                "    'accountSid': 'ACc2134e2652d189726c100fd467eafc50',",
+                "    'accountToken': 'bb8754fe66962ecdb3af5c093dd7b20c',",
+                "    'from': '18064724596',",
+                "    'messagingServiceSid': '',",
+                "    'to': '18067890641',",
+                "    'body': 'Yo, party at Carters tonight. Kickin off at '+notepad.partytimetime,",
+                "    'statusCallback': '',",
+                "    'applicationSid': '',",
+                "    'maxPrice': '',",
+                "    'provideFeedback': ''",
+                "",
+                "}).on('success', function(payload){",
+                "     console.log('Twillio2 success ',payload); ",
+                "}).on('error', function(payload){",
+                "     console.log('Twillio2 error ', payload); ",
+                "});",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "4d8671a7-17cd-4c29-a57e-27b1d52e1efa"
+    },
+    "eeb281b0-a516-49ec-8939-677949367e2f": {
+        "id": "eeb281b0-a516-49ec-8939-677949367e2f",
+        "class": "TextToSpeech",
+        "name": "",
+        "options": {
+            "words": "Your party is all set, get ready to rock and roll !!",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "4d8671a7-17cd-4c29-a57e-27b1d52e1efa"
+    },
+    "fed20597-5b8e-479c-a0f4-9ecd4989ccdf": {
+        "id": "fed20597-5b8e-479c-a0f4-9ecd4989ccdf",
+        "class": "Subtree",
+        "name": "",
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "4d8671a7-17cd-4c29-a57e-27b1d52e1efa"
+    },
+    "aa5b039a-18ff-4d76-ad87-619dfdd5ebaf": {
+        "id": "aa5b039a-18ff-4d76-ad87-619dfdd5ebaf",
+        "class": "TextToSpeech",
+        "name": "",
+        "options": {
+            "words": "What time is this going down?",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "4d8671a7-17cd-4c29-a57e-27b1d52e1efa"
+    },
+    "c95751d0-b890-491b-96bb-64fc5411c093": {
+        "id": "c95751d0-b890-491b-96bb-64fc5411c093",
+        "class": "LookAt",
+        "name": "",
+        "options": {
+            "getTarget": [
+                "() => {",
+                "    return {x: 180, y: 0, z: 0};",
+                "}"
+            ],
+            "isContinuous": false,
+            "config": [
+                "(lookAt) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "4d8671a7-17cd-4c29-a57e-27b1d52e1efa"
+    },
+    "428b6676-f202-4530-9220-7d49c555fc18": {
+        "id": "428b6676-f202-4530-9220-7d49c555fc18",
+        "class": "SucceedOnListen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "partytime.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', function(asrResult, speakerIds) {",
+                "      notepad.partytimetime = asrResult.NLParse.what; ",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "72ade94a-4ce3-473d-9db5-6407ff58729f": {
+        "id": "72ade94a-4ce3-473d-9db5-6407ff58729f",
+        "class": "Subtree",
+        "name": "listen animation",
+        "options": {
+            "behaviorPath": "listen.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "4d8671a7-17cd-4c29-a57e-27b1d52e1efa",
+        "decorators": [
+            "428b6676-f202-4530-9220-7d49c555fc18"
+        ]
+    }
+}

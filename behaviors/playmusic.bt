@@ -1,0 +1,139 @@
+{
+    "3": {
+        "id": 3,
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "children": [
+            "2ec1187a-d585-438e-b23f-0b8ed69bae31",
+            "3ed777f3-07d7-48a0-b7fc-2a41fdc1f6cf",
+            "bce31e4c-adb9-4bbe-b70d-7ac1bb173e36",
+            "e5717113-5219-41a4-84bd-57a10e6fbc7d",
+            "dd9993dd-ab2a-4a74-beb1-e444aa19e7aa"
+        ],
+        "decorators": []
+    },
+    "meta": {
+        "version": 1
+    },
+    "3ed777f3-07d7-48a0-b7fc-2a41fdc1f6cf": {
+        "id": "3ed777f3-07d7-48a0-b7fc-2a41fdc1f6cf",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "happydance.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 3,
+        "decorators": [
+            "d8d8edf6-b5d4-4dd2-9b6e-47842649f11f",
+            "e684116e-9873-4f20-a04e-6edfb19cbe49"
+        ]
+    },
+    "2ec1187a-d585-438e-b23f-0b8ed69bae31": {
+        "id": "2ec1187a-d585-438e-b23f-0b8ed69bae31",
+        "class": "PlayAudio",
+        "name": "",
+        "options": {
+            "audioPath": "FX_DoYouWantToPlay_01.mp3"
+        },
+        "asset-pack": "core",
+        "parent": 3
+    },
+    "dd9993dd-ab2a-4a74-beb1-e444aa19e7aa": {
+        "id": "dd9993dd-ab2a-4a74-beb1-e444aa19e7aa",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "shookupdance.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 3
+    },
+    "e5717113-5219-41a4-84bd-57a10e6fbc7d": {
+        "id": "e5717113-5219-41a4-84bd-57a10e6fbc7d",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "playbutton.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 3
+    },
+    "e684116e-9873-4f20-a04e-6edfb19cbe49": {
+        "id": "e684116e-9873-4f20-a04e-6edfb19cbe49",
+        "class": "SucceedOnListen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "nextsong.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', function(asrResult, speakerIds) {",
+                "      if (asrResult.NLParse.what == \"next\") {",
+                "        notepad.what = \"next\";",
+                "      }",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "d8d8edf6-b5d4-4dd2-9b6e-47842649f11f": {
+        "id": "d8d8edf6-b5d4-4dd2-9b6e-47842649f11f",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    if (notepad.what != \"next\")",
+                "      return false;",
+                "    else ",
+                "      return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "bce31e4c-adb9-4bbe-b70d-7ac1bb173e36": {
+        "id": "bce31e4c-adb9-4bbe-b70d-7ac1bb173e36",
+        "class": "TimeoutJs",
+        "name": "",
+        "options": {
+            "getTime": [
+                "() => {",
+                "    return 2000;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 3
+    }
+}

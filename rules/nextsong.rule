@@ -1,0 +1,7 @@
+TopRule = $*
+
+(next){what='next'} |
+(another song){what='next'} |
+(not like this){what='next'}
+
+$*;

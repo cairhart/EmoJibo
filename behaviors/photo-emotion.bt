@@ -1,0 +1,452 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "children": [
+            "2ced4f3b-9e39-4581-8b24-47e2c2859a5f",
+            "7fb7c0c7-f9ee-4b7b-bc67-e73fccea30a7",
+            "f615089e-9b01-4ee7-8c27-1e6ee68c462c",
+            "009578b6-abf7-448a-9181-e619c976e7d5",
+            "7653fd4d-38be-43be-87e8-ca9e72cc9035",
+            "89cd9e22-a2d1-42a5-b0c9-dc072c77517e",
+            "c382e28c-8998-4c2c-86c1-7c0afc7e9fdb",
+            "088d12a2-04b8-4caa-ac75-a20fd703e0d3"
+        ],
+        "decorators": [],
+        "options": {}
+    },
+    "6": {
+        "id": 6,
+        "class": "TakePhoto",
+        "name": "take photo on shutter-click event",
+        "options": {
+            "resolution": 2,
+            "onPhoto": [
+                "(error, imageUrl) => {",
+                "  ",
+                "// put the photo's URL on the notepad",
+                "notepad.imageUrl = imageUrl;",
+                "",
+                "}"
+            ],
+            "noDistortion": true
+        },
+        "asset-pack": "core",
+        "parent": "f615089e-9b01-4ee7-8c27-1e6ee68c462c",
+        "decorators": [
+            "273514a2-af90-4962-8e12-d3a53388d345"
+        ]
+    },
+    "meta": {
+        "version": 1
+    },
+    "7653fd4d-38be-43be-87e8-ca9e72cc9035": {
+        "id": "7653fd4d-38be-43be-87e8-ca9e72cc9035",
+        "class": "TimeoutJs",
+        "name": "pause with photo on screen for 3 seconds",
+        "options": {
+            "getTime": [
+                "() => {",
+                "    return 3000;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "c382e28c-8998-4c2c-86c1-7c0afc7e9fdb": {
+        "id": "c382e28c-8998-4c2c-86c1-7c0afc7e9fdb",
+        "class": "ExecuteScript",
+        "name": "display the eye again",
+        "options": {
+            "exec": [
+                "() => {",
+                "  //remove the image from the screen",
+                "  jibo.face.stage.removeChild(notepad.photo); ",
+                "  ",
+                "  //force draw",
+                "  jibo.face.update(); ",
+                "  ",
+                "  //render only when dof values are dirty",
+                "  jibo.face.renderOnlyWhenDirty = true; ",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "f615089e-9b01-4ee7-8c27-1e6ee68c462c": {
+        "id": "f615089e-9b01-4ee7-8c27-1e6ee68c462c",
+        "class": "Parallel",
+        "name": "",
+        "options": {
+            "succeedOnOne": false
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            "183e8b3c-372e-4a38-88be-caf4385eaec1",
+            6
+        ]
+    },
+    "183e8b3c-372e-4a38-88be-caf4385eaec1": {
+        "id": "183e8b3c-372e-4a38-88be-caf4385eaec1",
+        "class": "PlayAnimation",
+        "name": "play the camera animation",
+        "options": {
+            "animPath": "camera.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "f615089e-9b01-4ee7-8c27-1e6ee68c462c"
+    },
+    "273514a2-af90-4962-8e12-d3a53388d345": {
+        "id": "273514a2-af90-4962-8e12-d3a53388d345",
+        "class": "StartOnAnimEvent",
+        "name": "",
+        "options": {
+            "eventName": "shutter-click",
+            "onReceived": [
+                "(animFileName, payload) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "009578b6-abf7-448a-9181-e619c976e7d5": {
+        "id": "009578b6-abf7-448a-9181-e619c976e7d5",
+        "class": "ExecuteScript",
+        "name": "",
+        "options": {
+            "exec": [
+                "() => {",
+                "  //redraw every frame",
+                "  jibo.face.renderOnlyWhenDirty = false; ",
+                "  ",
+                "  // create new Pixi sprite",
+                "  notepad.photo = new PIXI.Sprite();",
+                "  ",
+                "  // set the texture of the sprite to the imageURL",
+                "  notepad.photo.texture = PIXI.Texture.fromImage(notepad.imageUrl);",
+                "  ",
+                "  // add the sprite to the stage",
+                "  jibo.face.stage.addChild(notepad.photo);",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "7fb7c0c7-f9ee-4b7b-bc67-e73fccea30a7": {
+        "id": "7fb7c0c7-f9ee-4b7b-bc67-e73fccea30a7",
+        "class": "LookAt",
+        "name": "find a face",
+        "options": {
+            "getTarget": [
+                "() => {",
+                "  console.log('entry ');",
+                "  let jibo = require('jibo');",
+                "  //let entity = jibo.lps.getClosestVisualEntity();",
+                "  //jibo.audio.setMasterVolume(1.0,function(){});",
+                "  let position = {x:1, y:1, z:1};",
+                "  /*",
+                "  if (entity) {",
+                "    console.log('entity ',entity);",
+                "    //self.testCondition = false;",
+                "    position = {x: entity.position.x, y: entity.position.y, z: entity.position.z};",
+                "  }",
+                "  */",
+                "  return position;",
+                "}"
+            ],
+            "isContinuous": true,
+            "config": [
+                "(lookAt) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [
+            "73fea7eb-d48b-40c7-aaca-86aa534e820d"
+        ]
+    },
+    "89cd9e22-a2d1-42a5-b0c9-dc072c77517e": {
+        "id": "89cd9e22-a2d1-42a5-b0c9-dc072c77517e",
+        "class": "ExecuteScript",
+        "name": "",
+        "options": {
+            "exec": [
+                "() => {",
+                "\tconst RapidAPI = require('rapidapi-connect');",
+                "\tconst fs = require('fs');",
+                "\tconst rapid = new RapidAPI('EmotionAPI', '0b198ef3-3453-4b64-91e8-71b6ae38aa8e');",
+                "\tconsole.log('notepad.imageUrl ',notepad.imageUrl);",
+                "",
+                "\tvar canvas = document.getElementsByTagName('canvas')[0];",
+                "\tvar dataURL = canvas.toDataURL('image/jpeg');",
+                "\tvar base64 = dataURL.replace(/^data:image\\/(png|jpg|jpeg);base64,/, \"\");",
+                "\tconsole.log('dataURL ',dataURL);",
+                "\tconsole.log('base64 ',base64);",
+                "\tfs.writeFile(\"arghhhh.jpg\", new Buffer(base64, \"base64\"), function(err) {",
+                "\t\tconsole.log('err ',err);",
+                "\t\trapid.call('MicrosoftEmotionAPI', 'getEmotionRecognition', { ",
+                "\t\t    'image': fs.createReadStream('arghhhh.jpg'),",
+                "\t\t    'subscriptionKey': '405be80e7dee451bb5875c298da8f834'",
+                "\t\t}).on('success', function(payload){",
+                "\t\t     console.log(\"sucess \",payload);",
+                "\t\t\t\t if(payload[0] && payload[0].scores){",
+                "\t\t\t\t\t var emotions = payload[0].scores;",
+                "\t\t\t\t\t console.log('emotions ',emotions);",
+                "\t\t\t\t\t var keysSorted = Object.keys(emotions).sort(function(a,b){return emotions[a]-emotions[b]});",
+                "\t\t\t\t\t console.log('keysSorted ',keysSorted);",
+                "\t\t\t\t\t if(keysSorted[7] == 'neutral')",
+                "\t\t\t\t\t \tnotepad.emotion = keysSorted[6];",
+                "\t\t\t\t\t else",
+                "\t\t\t\t\t  notepad.emotion = keysSorted[7];",
+                "\t\t\t\t\t console.log('notepad.emotion ',notepad.emotion);",
+                "\t\t\t\t }else{",
+                "\t\t\t\t \t notepad.emotion = \"sadness\";",
+                "\t\t\t\t }",
+                "\t\t\t\t //algorithm",
+                "\t\t}).on('error', function(payload){",
+                "\t\t     console.log(\"error \",payload);",
+                "\t\t\t\t notepad.emotion = \"sadness\";",
+                "\t\t});\t",
+                "\t});",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "8959d0b9-4535-4fac-8f0a-f9512ce334b8": {
+        "id": "8959d0b9-4535-4fac-8f0a-f9512ce334b8",
+        "class": "Subtree",
+        "name": "",
+        "options": {
+            "behaviorPath": "main.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "088d12a2-04b8-4caa-ac75-a20fd703e0d3",
+        "decorators": [
+            "cfee1095-2a74-414e-9d1a-565b7c53510b"
+        ]
+    },
+    "73fea7eb-d48b-40c7-aaca-86aa534e820d": {
+        "id": "73fea7eb-d48b-40c7-aaca-86aa534e820d",
+        "class": "TimeoutSucceed",
+        "name": "",
+        "options": {
+            "timeout": 3000
+        },
+        "asset-pack": "core"
+    },
+    "2ced4f3b-9e39-4581-8b24-47e2c2859a5f": {
+        "id": "2ced4f3b-9e39-4581-8b24-47e2c2859a5f",
+        "class": "Subtree",
+        "name": "",
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [
+            "f2101758-b99c-4188-853d-4d532103679e"
+        ]
+    },
+    "f2101758-b99c-4188-853d-4d532103679e": {
+        "id": "f2101758-b99c-4188-853d-4d532103679e",
+        "class": "TimeoutSucceed",
+        "name": "",
+        "options": {
+            "timeout": 7000
+        },
+        "asset-pack": "core"
+    },
+    "1c83d927-7d3c-4ac4-bacb-678e3779a359": {
+        "id": "1c83d927-7d3c-4ac4-bacb-678e3779a359",
+        "class": "Subtree",
+        "name": "",
+        "options": {
+            "behaviorPath": "happyflow.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "088d12a2-04b8-4caa-ac75-a20fd703e0d3",
+        "decorators": [
+            "5855663f-b03d-4b3a-9e67-ae358bf9b7b7"
+        ]
+    },
+    "088d12a2-04b8-4caa-ac75-a20fd703e0d3": {
+        "id": "088d12a2-04b8-4caa-ac75-a20fd703e0d3",
+        "class": "Switch",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            "8959d0b9-4535-4fac-8f0a-f9512ce334b8",
+            "1c83d927-7d3c-4ac4-bacb-678e3779a359",
+            "20082c93-0c6c-4543-ac23-665145e96b37"
+        ],
+        "decorators": [
+            "fc4370e7-7c07-41ea-aadb-4bbedc5b1d59"
+        ]
+    },
+    "5855663f-b03d-4b3a-9e67-ae358bf9b7b7": {
+        "id": "5855663f-b03d-4b3a-9e67-ae358bf9b7b7",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  console.log(\"notepad.emotion happiness = \",notepad.emotion);",
+                "  if (notepad.emotion == \"happiness\")",
+                "      return true;",
+                "  else",
+                "      return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "cfee1095-2a74-414e-9d1a-565b7c53510b": {
+        "id": "cfee1095-2a74-414e-9d1a-565b7c53510b",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  console.log(\"notepad.emotion sadness = \",notepad.emotion);",
+                "  if (notepad.emotion == \"sadness\")",
+                "    return true;",
+                "  else",
+                "    return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "20082c93-0c6c-4543-ac23-665145e96b37": {
+        "id": "20082c93-0c6c-4543-ac23-665145e96b37",
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "088d12a2-04b8-4caa-ac75-a20fd703e0d3",
+        "decorators": [
+            "e987eae0-0d03-4641-a4cf-ffb3c70ff956"
+        ],
+        "children": [
+            "f37e7123-2a19-42ec-8c1a-204bfbd04b18",
+            "0bb5c4cb-5f39-4533-8f44-5b26002e6b94"
+        ]
+    },
+    "e987eae0-0d03-4641-a4cf-ffb3c70ff956": {
+        "id": "e987eae0-0d03-4641-a4cf-ffb3c70ff956",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  console.log(\"notepad.emotion anger ... = \",notepad.emotion);",
+                "  if (notepad.emotion == \"anger\" || notepad.emotion == \"contempt\" || notepad.emotion == \"disgust\" || notepad.emotion == \"fear\" || notepad.emotion == \"surprise\" )",
+                "      return true;",
+                "  else",
+                "    return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "f37e7123-2a19-42ec-8c1a-204bfbd04b18": {
+        "id": "f37e7123-2a19-42ec-8c1a-204bfbd04b18",
+        "class": "TextToSpeechJs",
+        "name": "",
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "    callback('Your emotion is '+notepad.emotion+'. Sorry not yet programmed to handle this. Start Again.');",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "20082c93-0c6c-4543-ac23-665145e96b37"
+    },
+    "0bb5c4cb-5f39-4533-8f44-5b26002e6b94": {
+        "id": "0bb5c4cb-5f39-4533-8f44-5b26002e6b94",
+        "class": "Subtree",
+        "name": "",
+        "options": {
+            "behaviorPath": "photo-emotion.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "20082c93-0c6c-4543-ac23-665145e96b37"
+    },
+    "fc4370e7-7c07-41ea-aadb-4bbedc5b1d59": {
+        "id": "fc4370e7-7c07-41ea-aadb-4bbedc5b1d59",
+        "class": "StartOnCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "  console.log('notepad.emotion Switch',notepad.emotion);",
+                "  if(notepad.emotion)",
+                "    return true;",
+                "  else",
+                "    return false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    }
+}
